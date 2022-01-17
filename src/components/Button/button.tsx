@@ -2,7 +2,7 @@
  * @Author: qianlong github:https://github.com/LINGyue-dot
  * @Date: 2022-01-16 21:59:24
  * @LastEditors: qianlong github:https://github.com/LINGyue-dot
- * @LastEditTime: 2022-01-16 22:16:58
+ * @LastEditTime: 2022-01-17 19:50:29
  * @Description:
  */
 
@@ -36,7 +36,7 @@ type AnchorButtonProps = BaseButtonProps &
 export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
 
 const Button: React.FC<ButtonProps> = props => {
-	const { children, size, btnType, disabled, href } = props;
+	const { children, size, btnType, disabled, href, ...resetProps } = props;
 
 	const classes = classNames("btn", {
 		[`btn-${btnType}`]: btnType,
@@ -47,13 +47,13 @@ const Button: React.FC<ButtonProps> = props => {
 
 	if (btnType === ButtonType.Link && href) {
 		return (
-			<a className={classes} href={href}>
+			<a className={classes} href={href} {...resetProps}>
 				{children}
 			</a>
 		);
 	} else {
 		return (
-			<button className={classes} disabled={disabled}>
+			<button className={classes} disabled={disabled} {...resetProps}>
 				{children}
 			</button>
 		);
