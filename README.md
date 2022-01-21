@@ -43,3 +43,25 @@ $
 
 
 
+
+
+
+
+## Menu
+
+
+
+
+
+#### Menu 的子元素只能为 MenuItem
+
+为 MenuItem 设置 `displayName` ，后在 Menu 中利用 `React.Children.map` 遍历子元素，并判断其 `displayName` 是否为 MenuItem
+
+
+
+#### MenuItem 自生成 index
+
+利用 `React.cloneElement` 进行浅拷贝，并将 `index` 添加到 props 上
+
+
+

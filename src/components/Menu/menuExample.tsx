@@ -2,7 +2,7 @@
  * @Author: qianlong github:https://github.com/LINGyue-dot
  * @Date: 2022-01-19 20:59:50
  * @LastEditors: qianlong github:https://github.com/LINGyue-dot
- * @LastEditTime: 2022-01-19 21:40:29
+ * @LastEditTime: 2022-01-21 15:08:10
  * @Description:
  */
 
@@ -24,7 +24,7 @@ const MenuExample: React.FC = () => {
 					标题2
 				</MenuItem>
 				<MenuItem index={2}>标题3</MenuItem>
-			</Menu>
+ 			</Menu>
 		</div>
 	);
 };
