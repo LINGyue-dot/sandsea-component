@@ -7,62 +7,62 @@
  */
 
 import classNames from "classnames";
-import { HtmlHTMLAttributes } from "react";
+import {HtmlHTMLAttributes} from "react";
 
 export enum ButtonSize {
-	Large = "lg",
-	Small = "sm",
+    Large = "lg",
+    Small = "sm",
 }
 
 export enum ButtonType {
-	Primary = "primary",
-	Danger = "danger",
-	Default = "default",
-	Link = "link",
+    Primary = "primary",
+    Danger = "danger",
+    Default = "default",
+    Link = "link",
 }
 
 export interface BaseButtonProps {
-	size: ButtonSize;
-	btnType?: ButtonType;
-	disabled?: boolean;
-	href?: string;
-	children: React.ReactNode;
+    size: ButtonSize;
+    btnType?: ButtonType;
+    disabled?: boolean;
+    href?: string;
+    children: React.ReactNode;
 }
 
 type NativeButtonProps = BaseButtonProps &
-	React.ButtonHTMLAttributes<HTMLElement>;
+    React.ButtonHTMLAttributes<HTMLElement>;
 type AnchorButtonProps = BaseButtonProps &
-	React.AnchorHTMLAttributes<HTMLElement>;
+    React.AnchorHTMLAttributes<HTMLElement>;
 export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>;
 
 const Button: React.FC<ButtonProps> = props => {
-	const { children, size, btnType, disabled, href, ...resetProps } = props;
+    const {children, size, btnType, disabled, href, ...resetProps} = props;
 
-	const classes = classNames("btn", {
-		[`btn-${btnType}`]: btnType,
-		[`btn-${size}`]: size,
-		// button 类型本身有 diabled 属性，但是  需要再添加上 diabled css 样式
-		disabled: btnType === ButtonType.Link && disabled,
-	});
+    const classes = classNames("btn", {
+        [`btn-${btnType}`]: btnType,
+        [`btn-${size}`]: size,
+        // button 类型本身有 diabled 属性，但是  需要再添加上 diabled css 样式
+        disabled: btnType === ButtonType.Link && disabled,
+    });
 
-	if (btnType === ButtonType.Link && href) {
-		return (
-			<a className={classes} href={href} {...resetProps}>
-				{children}
-			</a>
-		);
-	} else {
-		return (
-			<button className={classes} disabled={disabled} {...resetProps}>
-				{children}
-			</button>
-		);
-	}
+    if (btnType === ButtonType.Link && href) {
+        return (
+            <a className={classes} href={href}    {...resetProps}>
+                {children}
+            </a>
+        );
+    } else {
+        return (
+            <button className={classes} disabled={disabled} {...resetProps}>
+                {children}
+            </button>
+        );
+    }
 };
 
 Button.defaultProps = {
-	disabled: false,
-	btnType: ButtonType.Default,
+    disabled: false,
+    btnType: ButtonType.Default,
 };
 
 export default Button;
